@@ -28,8 +28,7 @@ type weatherRes struct {
 
 func GetWeather(loc string) weatherRes {
 	// Load environment variables
-	err := godotenv.Load()
-	if err != nil {
+	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
@@ -63,8 +62,7 @@ func GetWeather(loc string) weatherRes {
 	}
 
 	var w weatherRes // Store the unmarshalled response
-	err = json.Unmarshal(body, &w)
-	if err != nil {
+	if err = json.Unmarshal(body, &w); err != nil {
 		log.Fatalf("Failed to unmarshal the body: %v", err)
 	}
 

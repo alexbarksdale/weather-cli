@@ -6,6 +6,7 @@
 *.so
 *.dylib
 weather-cli
+.env
 
 # Mac
 .DS_Store

@@ -26,7 +26,7 @@ type weatherRes struct {
 	Main    owmMain      `json:"main"`
 }
 
-func GetWeather(loc string) weatherRes {
+func GetWeather(loc string) (weatherRes, error) {
 	// Load environment variables
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
@@ -66,5 +66,5 @@ func GetWeather(loc string) weatherRes {
 		log.Fatalf("Failed to unmarshal the body: %v", err)
 	}
 
-	return w
+	return w, err
 }
